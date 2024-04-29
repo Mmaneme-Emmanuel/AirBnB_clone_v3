@@ -30,7 +30,7 @@ def toGetid():
 def posting():
     '''Creates a State'''
     response = request.get_json()
-    if response id None:
+    if response is None:
         abort(400, {'Not a JSON'})
     if "name" not in response:
         abort(400, {'Missing name'})
@@ -45,7 +45,7 @@ def posting():
 def putinV():
     '''vladimir'''
     response = request.get_json()
-    if response id None:
+    if response is None:
         abort(400, {'Not a JSON'})
     stateObject = storage.get(State, state_id)
     if stateObject is None:
