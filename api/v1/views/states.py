@@ -1,7 +1,12 @@
-from flask import jsonify, abort, request
-from models import storage
-from models.state import State
+#!/usr/bin/python3
+''' new view for State objects'''
+
+from flask import Flask
+from flask import Flask, abort
 from api.v1.views import app_views
+from os import name
+from models.state import State
+from flask import request
 
 
 @app_views.route('/states/', methods=['POST'], strict_slashes=False)
