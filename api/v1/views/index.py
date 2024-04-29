@@ -14,11 +14,11 @@ def returnstuff():
 
 
 @app_views.route('/stats', strict_slashes=False)
-def stuff_to_retrieve():
+def stuff():
     '''JSON Responses'''
     todos = {'states': State, 'users': User,
              'amenities': Amenity, 'cities': City,
              'places': Place, 'reviews': Review}
-    for obj in todos:
-        todos[obj] = storage.count(todos[obj])
+    for key in todos:
+        todos[key] = storage.count(todos[key])
     return jsonify(todos)
