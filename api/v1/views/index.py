@@ -20,5 +20,5 @@ def stuff_to_retrieve():
              'amenities': Amenity, 'cities': City,
              'places': Place, 'reviews': Review}
     for obj in todos:
-        todos[obj] = storage.count(todos[key])
+        todos[obj] = storage.count(todos[obj])
     return jsonify(todos)
