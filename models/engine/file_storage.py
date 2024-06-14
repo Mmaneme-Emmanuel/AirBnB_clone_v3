@@ -41,26 +41,25 @@ class FileStorage:
             self.__objects[key] = obj
 
     def get(self, cls, id):
-        """A method to retrieve one object:"""
-        for obj in list_of_objects:
-            if isinstance(obj, cls) and obj.id == id:
-                return obj
-            return None
+        """A method to retrieve one object"""
+        key = cls.__name__ + "." + id
+        return self.__objects.get(key)
 
     def count(self, cls=None):
+        """A method to count the number of objects"""
         count = 0
-        for obj in self.storage:
+        for obj in self.__objects.values():
             if cls is None or isinstance(obj, cls):
                 count += 1
-                return count
+        return count
 
-            def save(self):
-                """serializes __objects to the JSON file (path: __file_path)"""
-                json_objects = {}
-                for key in self.__objects:
-                    json_objects[key] = self.__objects[key].to_dict()
-                    with open(self.__file_path, 'w') as f:
-                        json.dump(json_objects, f)
+    def save(self):
+        """serializes __objects to the JSON file (path: __file_path)"""
+        json_objects = {}
+        for key in self.__objects:
+            json_objects[key] = self.__objects[key].to_dict()
+        with open(self.__file_path, 'w') as f:
+            json.dump(json_objects, f)
 
     def reload(self):
         """deserializes the JSON file to __objects"""

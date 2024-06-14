@@ -1,20 +1,21 @@
 #!/usr/bin/python3
 """
-Contains the class DBStorage
+Contains the FileStorage class
 """
 
-import models
+import sys
+import os
+import json
 from models.amenity import Amenity
-from models.base_model import BaseModel, Base
+from models.base_model import BaseModel
 from models.city import City
 from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
-from os import getenv
-import sqlalchemy
-from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
+
+# Add the project root directory to sys.path
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 classes = {"Amenity": Amenity, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
